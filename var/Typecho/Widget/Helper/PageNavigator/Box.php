@@ -39,6 +39,8 @@ class Typecho_Widget_Helper_PageNavigator_Box extends Typecho_Widget_Helper_Page
         $default = array(
             'itemTag'       =>  'li',
             'textTag'       =>  'span',
+            'textClass'       =>  '',
+            'defaultClass'  =>  '',
             'currentClass'  =>  'current',
             'prevClass'     =>  'prev',
             'nextClass'     =>  'next'
@@ -48,7 +50,8 @@ class Typecho_Widget_Helper_PageNavigator_Box extends Typecho_Widget_Helper_Page
         extract($template);
 
         // 定义item
-        $itemBegin = empty($itemTag) ? '' : ('<' . $itemTag . '>');
+        $itemBegin = empty($itemTag) ? '' : ('<' . $itemTag 
+            . (empty($defaultClass) ? '' : ' class="' . $defaultClass . '"') . '>');
         $itemCurrentBegin = empty($itemTag) ? '' : ('<' . $itemTag 
             . (empty($currentClass) ? '' : ' class="' . $currentClass . '"') . '>');
         $itemPrevBegin = empty($itemTag) ? '' : ('<' . $itemTag 
@@ -56,9 +59,10 @@ class Typecho_Widget_Helper_PageNavigator_Box extends Typecho_Widget_Helper_Page
         $itemNextBegin = empty($itemTag) ? '' : ('<' . $itemTag 
             . (empty($nextClass) ? '' : ' class="' . $nextClass . '"') . '>');
         $itemEnd = empty($itemTag) ? '' : ('</' . $itemTag . '>');
-        $textBegin = empty($textTag) ? '' : ('<' . $textTag . '>');
+        $textBegin = empty($textTag) ? '' : ('<' . $textTag
+            . (empty($textClass) ? '' : ' class="' . $textClass . '"') . '>');
         $textEnd = empty($textTag) ? '' : ('</' . $textTag . '>');
-        $linkBegin = '<a href="%s">';
+        $linkBegin = '<a href="%s"' . (empty($defaultClass) ? '' : ' class="' . $defaultClass . '"') . '>';
         $linkCurrentBegin = empty($itemTag) ? ('<a href="%s"'
             . (empty($currentClass) ? '' : ' class="' . $currentClass . '"') . '>')
             : $linkBegin;
